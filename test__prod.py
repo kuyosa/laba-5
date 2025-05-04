@@ -32,6 +32,8 @@ def test_create_user():
         "/register/",
         json={"username": "testuser", "email": "testuser@example.com", "full_name": "Test User", "password": "password123"},
     )
+    print(response.status_code)
+    print(response.json())
     assert response2.status_code == 400
     assert response.status_code == 200
     
@@ -92,7 +94,7 @@ def test_change_user():
     response = client.put(
         f'/users/{get_user_id()}',
         json={'username': 'testuser1', "email": "testuser123@mail.ru"},
-        headers={'Authorization': f'Bearer {data['access_token']}'}
+        headers={'Authorization': f'Bearer {data["access_token"]}'}
     )
     assert response.status_code == 200
     data = response.json()
