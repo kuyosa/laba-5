@@ -79,7 +79,7 @@ def test_get_current_user():
     data = response.json()
     response2 = client.get(
         '/users/me',
-        headers={'Authorization': f'Bearer {data['access_token']}'}
+        headers={'Authorization': f'Bearer {data["access_token"]}'}
     )
     data2 = response2.json()
     assert response2.status_code == 200
@@ -115,12 +115,12 @@ def test_delete_user():
     data = response.json()
     response = client.delete(
         f'users/{get_user_id()}',
-        headers={'Authorization': f'Bearer {data['access_token']}'}
+        headers={'Authorization': f'Bearer {data["access_token"]}'}
     )
     assert response.status_code == 200
     response = client.delete(
         f'users/{get_user_id()}',
-        headers={'Authorization': f'Bearer {data['access_token']}'}
+        headers={'Authorization': f'Bearer {data["access_token"]}'}
     )
     assert response.status_code == 401
     
